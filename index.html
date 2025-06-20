@@ -1,0 +1,87 @@
+
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>FitForge Questionnaire</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: url('assets/fierce2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    input, select {
+      margin-top: 8px;
+      padding: 10px;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1em;
+      font-weight: bold;
+      background-color: #ff4d4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="overlay">
+<form action="dashboard.html">
+<h1>👟 Let’s Create Your Personalized Plan</h1>
+<label>How would you describe your fitness experience?</label>
+<select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+<label>What’s your #1 fitness goal?</label>
+<select><option>Feel lighter &amp; more energized</option><option>Strengthen &amp; tone</option><option>Sculpt &amp; define</option></select>
+<label>How many days a week would you love to move?</label>
+<select><option>3</option><option>4</option><option>5</option></select>
+<label>Which age group are you in?</label>
+<select><option>18–24</option><option>25–34</option><option>35–44</option><option>45+</option></select>
+<label>How do you identify?</label>
+<select><option>Female</option><option>Male</option><option>Nopen-binary</option><option>Prefer not to say</option></select>
+<label>Do you have any current injuries or sensitivities?</label>
+<select><option>Nope</option><option>Yes, legs or hips</option><option>Yes, arms or shoulders</option></select>
+<label>What equipment do you have access to?</label>
+<select><option>Nope</option><option>Yes (a few dumbbells or bands)</option><option>Full gym setup</option></select>
+<button type="submit">✨ Build My Custom Plan</button>
+</form>
+</div>
+</body>
+</html>

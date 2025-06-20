@@ -1,0 +1,66 @@
+
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Activate Account - FitForge</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+  body {
+    background: linear-gradient(to bottom right, #ffe4e1, #ddb2c9);
+    color: #2b2b2b;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  h1, h2, h3 {
+    color: #9b1b52;
+    text-align: center;
+  }
+  .tagline {
+    color: #d63384;
+    font-style: italic;
+    font-weight: 600;
+  }
+  button {
+    background-color: #9b1b52;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  button:hover {
+    transform: translateY(-2px);
+    background-color: #7f1643;
+  }
+  .calendar .day {
+    border: 3px solid #9b1b52;
+    background-color: #ffe4e1;
+    transition: background-color 0.3s, border 0.3s;
+  }
+  .calendar .day.completed {
+    background-color: #ffdfe8;
+  }
+  .calendar .day.current {
+    border-color: #7f1643;
+    background-color: #ffc7d0;
+  }
+</style>
+</head>
+<body>
+<div style="text-align:center; margin: 20px auto;">
+<img alt="Independent Woman Banner" src="https://tse2.mm.bing.net/th?id=OIP.N1CTh29B9Zw4K5wMFJs1KAAAAA&amp;pid=Api" style="max-width:100%; border-radius:12px;"/>
+</div>
+<h1>🔓 Demo Mode Activated</h1>
+<div style="text-align:center; margin: 20px auto;">
+<img alt="Fierce Woman 1" src="assets/fierce2.jpg" style="max-width:90%; border-radius:12px; margin-bottom:15px;"/>
+<img alt="Fierce Woman 2" src="assets/fierce3.jpg" style="max-width:90%; border-radius:12px; margin-bottom:15px;"/>
+<img alt="Fierce Woman 3" src="assets/fierce4.jpg" style="max-width:90%; border-radius:12px;"/>
+</div>
+<h3 class="tagline">Reach your goals in 10–12 weeks!</h3>
+<p>You've unlocked full access to the FitForge site. You can explore the platform now without needing to log in.</p>
+<button onclick="localStorage.setItem('fitforgeDemoMode', 'true'); window.location.href='home.html';">
+    Enter FitForge Demo
+  </button>
+</body>
+</html>

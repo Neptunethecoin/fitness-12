@@ -1,0 +1,147 @@
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Your Fitness Plan – FitForge</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+  body {
+    background: linear-gradient(to bottom right, #ffe4e1, #ddb2c9);
+    color: #2b2b2b;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  h1, h2, h3 {
+    color: #9b1b52;
+    text-align: center;
+  }
+  .tagline {
+    color: #d63384;
+    font-style: italic;
+    font-weight: 600;
+  }
+  button {
+    background-color: #9b1b52;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  button:hover {
+    transform: translateY(-2px);
+    background-color: #7f1643;
+  }
+  .calendar .day {
+    border: 3px solid #9b1b52;
+    background-color: #ffe4e1;
+    transition: background-color 0.3s, border 0.3s;
+  }
+  .calendar .day.completed {
+    background-color: #ffdfe8;
+  }
+  .calendar .day.current {
+    border-color: #7f1643;
+    background-color: #ffc7d0;
+  }
+</style>
+</head>
+<body>
+<div style="text-align:center; margin: 20px auto;">
+<img alt="Fierce Woman 1" src="assets/fierce2.jpg" style="max-width:90%; border-radius:12px; margin-bottom:15px;"/>
+<img alt="Fierce Woman 2" src="assets/fierce3.jpg" style="max-width:90%; border-radius:12px; margin-bottom:15px;"/>
+<img alt="Fierce Woman 3" src="assets/fierce4.jpg" style="max-width:90%; border-radius:12px;"/>
+</div>
+<div style="text-align:center; margin: 20px auto;">
+<img alt="Independent Woman Banner" src="https://tse2.mm.bing.net/th?id=OIP.N1CTh29B9Zw4K5wMFJs1KAAAAA&amp;pid=Api" style="max-width:100%; border-radius:12px;"/>
+</div>
+<div class="container">
+<h2>Your Time-Based Plan is Ready, <span id="username"></span> 💪</h2>
+<div class="workout">
+<div class="exercise" id="current-exercise">Loading...</div>
+<img alt="Exercise Image" id="exercise-img" src="" style="width:100%;max-width:500px;margin-bottom:1rem;"/><div id="timer">00:00</div>
+<div class="controls">
+<button onclick="startWorkout()">▶️ Start</button>
+<button onclick="pauseWorkout()">⏸️ Pause</button>
+<button onclick="resetWorkout()">🔄 Reset</button>
+</div>
+</div>
+<ul id="workout-list"></ul>
+</div>
+<button onclick="window.location.href='index.html'">🏠 Return to Homepage</button>
+<script>
+    const name = localStorage.getItem("name");
+    const plan = JSON.parse(localStorage.getItem("plan")) || [];
+    const intervals = JSON.parse(localStorage.getItem("intervals")) || [];
+
+    document.getElementById("username").textContent = name;
+    const list = document.getElementById("workout-list");
+    plan.forEach((move, index) => {
+      const item = document.createElement("li");
+      item.textContent = `${move} – ${intervals[index]} sec`;
+      list.appendChild(item);
+    });
+
+    let currentIndex = 0;
+    let currentTime = 0;
+    let timerInterval;
+
+    const exerciseDisplay = document.getElementById("current-exercise");
+    const timerDisplay = document.getElementById("timer");
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(currentTime / 60);
+      const secs = currentTime % 60;
+      timerDisplay.textContent = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    }
+
+    function startWorkout() {
+      if (currentIndex >= plan.length) return;
+      if (!timerInterval) {
+        exerciseDisplay.textContent = plan[currentIndex]; updateExerciseImage(plan[currentIndex]);
+        currentTime = intervals[currentIndex];
+        updateTimerDisplay();
+
+        timerInterval = setInterval(() => {
+          currentTime--;
+          updateTimerDisplay();
+          if (currentTime <= 0) {
+            currentIndex++;
+            if (currentIndex >= plan.length) {
+              clearInterval(timerInterval);
+              exerciseDisplay.textContent = "✅ Workout Complete!";
+              timerDisplay.textContent = "00:00";
+              return;
+            }
+            exerciseDisplay.textContent = plan[currentIndex]; updateExerciseImage(plan[currentIndex]);
+            currentTime = intervals[currentIndex];
+          }
+        }, 1000);
+      }
+    }
+
+    function pauseWorkout() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetWorkout() {
+      pauseWorkout();
+      currentIndex = 0;
+      currentTime = 0;
+      exerciseDisplay.textContent = "Press ▶️ Start";
+      updateTimerDisplay();
+    }
+
+    resetWorkout();
+    </script>
+<script src="update_image.js"></script>
+<div style="text-align:center; margin-top: 40px;">
+<button onclick="location.href='index.html'">Landing</button>
+<button onclick="location.href='register.html'">Register</button>
+<button onclick="location.href='login.html'">Login</button>
+<button onclick="location.href='home.html'">Home</button>
+<button onclick="location.href='10week_plan.html'">Calendar</button>
+</div>
+</body>
+</html>
